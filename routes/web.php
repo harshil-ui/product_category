@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [CategoryController::class, 'index'])->name('home');
+
+Route::post('/insertproduct', [ProductController::class, 'store'])->name('create-product');
+
+Route::get('/product-form', [ProductController::class, 'create'])->name('form');
+
+Route::get('/products', [ProductController::class, 'index'])->name('product-list');
