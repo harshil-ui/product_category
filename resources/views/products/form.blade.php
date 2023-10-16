@@ -9,6 +9,8 @@
 </head>
 
 <body>
+    <a href="{{ route('product-list') }}">Back</a>
+    <br>
     <form action="{{ route('create-product') }}" method="post">
         @csrf
         <label>Name:
