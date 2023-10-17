@@ -35,30 +35,6 @@ class ProductController extends Controller
         return redirect(route('home'));
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(product $product)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(product $product)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(product $product)
-    {
-        //
-    }
-
     public function getCategory()
     {
         $category = Category::select('id', 'name')->get();
