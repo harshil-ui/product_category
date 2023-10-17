@@ -13,8 +13,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('category')->get();
-
+        if (request('search')) {
+            $products = Product::with('category')
+                ->where('products.name', 'like', '%' . request('search') . '%')
+                ->get();
+        } else {
+            $products = Product::with('category')
+                ->simplePaginate(10);
+        }
         return view('products.index', ['products' => $products]);
     }
 
@@ -32,7 +38,7 @@ class ProductController extends Controller
     public function store(StoreproductRequest $request)
     {
         Product::create($request->validated());
-        return redirect(route('home'));
+        return redirect(route('product-list'));
     }
 
     public function getCategory()
