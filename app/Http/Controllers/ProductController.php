@@ -16,7 +16,7 @@ class ProductController extends Controller
         if (request('search')) {
             $products = Product::with('category')
                 ->where('products.name', 'like', '%' . request('search') . '%')
-                ->get();
+                ->simplePaginate();
         } else {
             $products = Product::with('category')
                 ->simplePaginate(10);
