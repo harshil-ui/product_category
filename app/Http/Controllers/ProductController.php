@@ -19,7 +19,7 @@ class ProductController extends Controller
                 ->get();
         } else {
             $products = Product::with('category')
-                ->simplePaginate(2);
+                ->simplePaginate(10);
         }
         return view('products.index', ['products' => $products]);
     }
